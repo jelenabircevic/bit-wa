@@ -1,15 +1,23 @@
 /* let arr100 = Array(100).fill().map((v, i) => i);
 console.log(arr100); */
 
-let arr100 = Array(100).fill().map((v, i) => i).map((elem, i) => new Promise ((resolve, reject) => {
+let arr100 = Array(100).fill().map((v, i) => i).map((elem, i) => new Promise((resolve, reject) => {
     setTimeout(() => {
-        console.log(`waiting...${i}`);
-        resolve();
-    }, parseInt(Math.random()*500));
+        resolve(i);
+    }, parseInt(Math.random() * 500));
 }))
 
-arr100.forEach((elem, i) => {
-    elem.then(() => {
-        console.log(`done...${i}`);
+arr100.forEach((elem) => {
+    elem.then((value) => {
+        console.log(`done...${value}`);
     })
+})
+
+let first = Promise.race(arr100);
+first.then((value) => {
+    console.log(`Completed first...${value}`);
+}, first);
+
+Promise.all(arr100).then(() => {
+    console.log('All complete!');
 })
