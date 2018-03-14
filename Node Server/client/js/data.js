@@ -1,21 +1,13 @@
-class Post {
-    constructor(title, lead, id) {
-        this.title = title;
-        this.lead = lead;
-        this.id = id;
-    }
-}
+import Post from './entities.js';
+import { getResponse } from './service.js';
 
 export const getData = (url) => {
-    return fetch(url)
-        .then((response) => {
-            console.log(response);
-            return response.json()
-        })
-        .then((resJ) => {
-            console.log(resJ);
-            let mapped = resJ.map((elem) => new Post(elem.title, elem.lead, elem.id));
-            console.log(mapped);
+    return getResponse(url)
+        .then((arrayOfObjects) => {
+            let mapped = arrayOfObjects.map((elem) => new Post(elem.title, elem.lead, elem.id));
             return mapped;
-        });
+        })
+        .catch((error) => {
+            console.log(`Oops, something went wrong! ${error.message}`)
+        })
 }
