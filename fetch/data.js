@@ -1,4 +1,4 @@
-export const getRequest = (name/* , callback */) => {
+export const getRequest = (name /* , callback */ ) => {
     /* fetch(`http://api.tvmaze.com/singlesearch/shows?q=${name}`)
         .then((response) => {
             return response.json();
@@ -13,26 +13,23 @@ export const getRequest = (name/* , callback */) => {
             callback(obj);
         }) */
 
-        return fetch(`http://api.tvmaze.com/singlesearch/shows?q=${name}`)
-                .then((response) => {
-                    console.log(response)
-                    if (response.status < 400){
-
-                        return response.json();
-                    } else {console.log("status je vise od 400")
-                        return 0
-                    }
-                })
-                .then((newResponse) => {
-                    if (!newResponse) {
-                        return null;
-                    }
-                    return new Show (newResponse.name, newResponse.image.original);
-                })
-                .catch((error) => {
-                    console.log(error)
-                    alert('no internet connection!')
-                })
+    return fetch(`http://api.tvmaze.com/singlesearch/shows?q=${name}`)
+        .then((response) => {
+            console.log(response)
+            if (response.status < 400) {
+                return response.json();
+            }
+            throw new Error(`Response status = ${response.status}`)
+        })
+        .then((newResponse) => {
+            if (!newResponse) {
+                return null;
+            }
+            return new Show(newResponse.name, newResponse.image.original);
+        })
+        .catch((error) => {
+            console.log(`There has been a problem: ${error.message}`);
+        })
 }
 
 class Show {
