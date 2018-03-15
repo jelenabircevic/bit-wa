@@ -1,4 +1,4 @@
-import { startGettingData } from './index.js';
+import { startGettingData } from './main.js';
 
 $(() => {
     startGettingData();
