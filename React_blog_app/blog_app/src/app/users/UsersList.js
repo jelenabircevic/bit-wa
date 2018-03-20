@@ -1,11 +1,12 @@
 import React from 'react';
 import UserListItem from './UserListItem';
+import UserCardItem from './UserCardItem';
 
 const UsersList = props => {
     return (
-        <div className="users-list">
+        <div className={props.classes}>
         {props.users.map(((user, i) => {
-            return (<UserListItem obj = {user} key = {i} />)
+            return (<UserCardItem obj = {user} key = {i} />)
         }))}
         </div>
     )

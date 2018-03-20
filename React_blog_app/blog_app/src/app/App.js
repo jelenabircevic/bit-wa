@@ -17,7 +17,8 @@ class App extends Component {
     users.getData()
     .then(res => {
       this.setState({
-      users: res
+        classes: "container row",
+        users: res
     })
   })
 }
@@ -26,7 +27,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header title="React Users"/>
-        <UsersList users = {this.state.users}/>
+        <UsersList users = {this.state.users} classes={this.state.classes}/>
         <Footer copy="2018 Copyright BITstudent"/>
       </div>
     );
