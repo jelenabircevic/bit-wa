@@ -3,6 +3,7 @@ import Header from './partials/Header';
 import Footer from './partials/Footer';
 import users from '../services/Users';
 import UsersList from './users/UsersList';
+import './App.css'
 
 class App extends Component {
   constructor(props){

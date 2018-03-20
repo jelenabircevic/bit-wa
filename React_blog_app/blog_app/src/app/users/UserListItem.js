@@ -4,13 +4,13 @@ const UserListItem = props => {
     return (
         <div className="card horizontal">
             <div className="card-image">
-                <img src={props.obj.image} alt="user_img"/>
+                <img className="avatar" src={props.obj.image} alt="user_img"/>
                 </div>
             <div className="card-stacked left">
                 <div className="card-content">
                     <p>{props.obj.name}</p>
-                    <p>{props.obj.email}</p>
-                    <p>{props.obj.dob}</p>
+                    <p className="email icon">{props.obj.email}</p>
+                    <p className="birthday icon">{props.obj.dob}</p>
                 </div>
             </div>
         </div>

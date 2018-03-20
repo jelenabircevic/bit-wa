@@ -1,0 +1,15 @@
+.avatar {
+    border-radius: 100px!important;
+}
+.icon {
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: left center;
+    padding-left: 25px;
+}
+.email {
+    background-image: url('http://reinventemail.com/wp-content/themes/petrichor/images/widget-icons/email.png');   
+}
+.birthday {
+    background-image: url('https://www.shareicon.net/data/128x128/2016/08/07/808187_birthday_512x512.png');
+}
