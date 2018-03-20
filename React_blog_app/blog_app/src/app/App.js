@@ -14,10 +14,13 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.setState({
-      users: users.getData()
+    users.getData()
+    .then(res => {
+      this.setState({
+      users: res
     })
-  }
+  })
+}
 
   render() {
     return (
