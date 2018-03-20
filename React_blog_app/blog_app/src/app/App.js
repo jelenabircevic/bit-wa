@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
 import Header from './partials/Header';
 import Footer from './partials/Footer';
 import users from '../services/Users';
@@ -27,7 +26,7 @@ class App extends Component {
       <div className="App">
         <Header title="React Users"/>
         <UsersList users = {this.state.users}/>
-        <Footer copy="&copy 2018 Copyright BITstudent"/>
+        <Footer copy="2018 Copyright BITstudent"/>
       </div>
     );
   }

@@ -13,19 +13,3 @@ const registerForAlerts = (limit, callback) => {
 module.exports = {
     registerForAlerts
 }
-
-//--------------------------------------------------------
-// Doing with Promise
-//--------------------------------------------------------
-
-/* let registerForAlerts = (limit) => {
-    new Promise((resolve, reject) => {
-
-        resolve([limit, freeMem]);
-    })
-    .then((value) => {
-        if (value.limit > value.freeMem) {
-           return value.freeMem;
-        }
-    })
-} */

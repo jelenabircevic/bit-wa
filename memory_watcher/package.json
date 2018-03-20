@@ -1,14 +1,13 @@
 {
-  "name": "memory_watcher",
-  "version": "1.0.0",
-  "description": "",
-  "main": "main.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "os": "^0.1.1"
-  }
+    "name": "memory_watcher",
+    "version": "1.0.0",
+    "description": "",
+    "main": "main.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node ./src/main.js"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {}
 }
