@@ -5,11 +5,11 @@ import UserCardItem from './UserCardItem';
 const renderListOrCards = (props) => {
     if (props.grid) {
         return (
-            props.users.map(user => <UserCardItem obj={user} key={user.id}/>)
+            props.users.map((user, i) => <UserCardItem obj={user} key={i}/>)
         )
     }
     return (
-        props.users.map(user => <UserListItem obj={user} key={user.id}/>)
+        props.users.map((user,i) => <UserListItem obj={user} key={i}/>)
     )
 }
 

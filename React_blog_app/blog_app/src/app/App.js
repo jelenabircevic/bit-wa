@@ -9,25 +9,23 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      grid: false,
+      viewButton: "view_module",
       users: []
     }
     this.changeView = this.changeView.bind(this)
+    this.refreshUsers = this.refreshUsers.bind(this)
   }
 
   componentDidMount() {
-    users.getData()
-      .then(res => {
-        this.setState({
-          grid: false,
-          viewButton: "view_module",
-          classes: "container row",
-          users: res
-        })
-      })
+    if (localStorage.data) {
+      this.setState({data: JSON.parse(localStorage.data)})
+    }
+    this.refreshUsers()
   }
 
   changeView() {
-    this.setState((prevState, props)=>{
+    this.setState((prevState, props) => {
       return {
         grid: !prevState.grid,
         viewButton: (prevState.grid) ? "view_module" : "view_list"
@@ -35,11 +33,21 @@ class App extends Component {
     })
   }
 
+  refreshUsers() {
+    users.getData()
+      .then(res => {
+        this.setState({
+          users: res
+        })
+        localStorage.setItem('data', JSON.stringify(res))
+      })
+  }
+
   render() {
     return (
       <div className="App">
-        <Header title="Bit Persons" changeView={this.changeView} viewButton={this.state.viewButton} />
-        <UsersList grid={this.state.grid} users={this.state.users} classes={this.state.classes} />
+        <Header title="Bit Persons" refreshUsers={this.refreshUsers} changeView={this.changeView} viewButton={this.state.viewButton} />
+        <UsersList grid={this.state.grid} users={this.state.users} />
         <Footer copy="2018 Copyright BITstudent" />
       </div>
     );

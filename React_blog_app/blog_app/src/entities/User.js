@@ -1,9 +1,10 @@
 class User {
-    constructor(name, email, dob, image) {
+    constructor(name, lastName, email, dob, image) {
         this.name = name;
+        this.fullName = `${name} ${lastName}`
         this.email = this.hideEmail(email);
         this.dob = this.birthday(dob);
-        this.image = image
+        this.image = image;
     }
 
     hideEmail(input) {
@@ -17,5 +18,5 @@ class User {
     }
 }
 
-const createUser = (name, email, dob, image) => new User(name, email, dob, image);
+const createUser = (name, lastName, email, dob, image) => new User(name, lastName, email, dob, image);
 export default createUser;

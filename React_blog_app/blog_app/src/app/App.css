@@ -1,5 +1,11 @@
 .avatar {
     border-radius: 100px!important;
+    width: 71px;
+    height: 71px;
+}
+#round {
+    padding-top: 20px;
+    padding-left: 15px;
 }
 .icon {
     background-size: contain;
