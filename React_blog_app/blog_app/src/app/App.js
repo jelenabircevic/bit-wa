@@ -18,10 +18,11 @@ class App extends Component {
   }
 
   componentDidMount() {
-    if (localStorage.data) {
-      this.setState({data: JSON.parse(localStorage.data)})
+    if (localStorage.getItem('data')) {
+      this.setState({ users: JSON.parse(localStorage.getItem('data')) })
+    } else {
+      this.refreshUsers()
     }
-    this.refreshUsers()
   }
 
   changeView() {
