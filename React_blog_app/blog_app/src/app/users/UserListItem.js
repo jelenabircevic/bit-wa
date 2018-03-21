@@ -2,7 +2,7 @@ import React from 'react';
 
 const UserListItem = props => {
     return (
-        <div className="card horizontal">
+        <div className="card horizontal col s12">
             <div className="card-image">
                 <img className="avatar" src={props.obj.image} alt="user_img"/>
                 </div>

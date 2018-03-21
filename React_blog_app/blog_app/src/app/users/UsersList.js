@@ -2,14 +2,17 @@ import React from 'react';
 import UserListItem from './UserListItem';
 import UserCardItem from './UserCardItem';
 
-const UsersList = props => {
+const renderListOrCards = (props) => {
+    if (props.grid) {
+        return (
+            props.users.map(user => <UserCardItem obj={user} key={user.id}/>)
+        )
+    }
     return (
-        <div className={props.classes}>
-        {props.users.map(((user, i) => {
-            return (<UserCardItem obj = {user} key = {i} />)
-        }))}
-        </div>
+        props.users.map(user => <UserListItem obj={user} key={user.id}/>)
     )
 }
+
+const UsersList = props => <div className="row container"> {renderListOrCards(props)} </div>
 
 export default UsersList;
