@@ -19,7 +19,10 @@ class App extends Component {
 
   componentDidMount() {
     if (localStorage.getItem('data')) {
-      this.setState({ users: JSON.parse(localStorage.getItem('data')) })
+      this.setState({
+        users: JSON.parse(localStorage.getItem('data')),
+        grid: localStorage.getItem('grid')
+    })
     } else {
       this.refreshUsers()
     }
@@ -27,6 +30,7 @@ class App extends Component {
 
   changeView() {
     this.setState((prevState, props) => {
+      localStorage.setItem('grid', !prevState.grid)
       return {
         grid: !prevState.grid,
         viewButton: (prevState.grid) ? "view_module" : "view_list"
