@@ -3,7 +3,7 @@ import React from 'react';
 const UserListItem = props => {
     return (
         <div className="col s12">
-            <div className="card horizontal">
+            <div className={`card horizontal ${props.obj.gender}`}>
                 <div id="round" className="card-image">
                     <img className="avatar" src={props.obj.image} alt="user_img" />
                 </div>
