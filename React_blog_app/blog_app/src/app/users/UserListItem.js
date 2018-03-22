@@ -10,8 +10,8 @@ const UserListItem = props => {
                 <div className="card-stacked left">
                     <div className="card-content">
                         <p>{props.obj.fullName}</p>
-                        <p className="email icon">{props.obj.email}</p>
-                        <p className="birthday icon">{props.obj.dob}</p>
+                        <p><i className="material-icons prefix">email</i>{props.obj.email}</p>
+                        <p><i className="material-icons prefix">cake</i>{props.obj.dob}</p>
                     </div>
                 </div>
             </div>

@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import Header from './partials/Header';
 import Footer from './partials/Footer';
 import users from '../services/Users';
-import UsersList from './users/UsersList';
-import Search from './users/Search';
+import Home from './users/Home';
+import Loading from './partials/Loading';
 import './App.css'
 
 class App extends Component {
@@ -12,18 +12,19 @@ class App extends Component {
     this.state = {
       grid: false,
       viewButton: "view_module",
-      users: []
+      users: [],
+      loading: false
     }
     this.changeView = this.changeView.bind(this)
     this.refreshUsers = this.refreshUsers.bind(this)
     this.filterUsers = this.filterUsers.bind(this)
   }
-  
+
   componentDidMount() {
     if (localStorage.getItem('data')) {
       this.setState({
         users: JSON.parse(localStorage.getItem('data')),
-        grid: localStorage.getItem('grid'),
+        grid: (localStorage.getItem('grid') === "true"),
         viewButton: (localStorage.getItem('grid')) ? "view_list" : "view_module",
       })
     } else {
@@ -42,11 +43,13 @@ class App extends Component {
   }
 
   refreshUsers() {
+    this.setState({ loading: true });
     users.getData()
       .then(res => {
         this.setState({
           users: res,
         })
+        this.setState({ loading: false });
         localStorage.setItem('data', JSON.stringify(res))
       })
   }
@@ -64,8 +67,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header title="Bit Persons" refreshUsers={this.refreshUsers} changeView={this.changeView} viewButton={this.state.viewButton} />
-        <Search filterUsers={this.filterUsers} />
-        <UsersList grid={this.state.grid} users={this.state.users} />
+        {(this.state.loading) ? <Loading /> : <Home filterUsers={this.filterUsers} grid={this.state.grid} users={this.state.users} />}
         <Footer copy="2018 Copyright BITstudent" />
       </div>
     );
