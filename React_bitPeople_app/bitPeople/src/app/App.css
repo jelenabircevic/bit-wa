@@ -86,20 +86,18 @@
 
 
   #root {
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
+    position: relative;
+    box-sizing: border-box;
+
   }
 
   #footer {
-    -webkit-flex: 1 0 auto;
-    flex: 1 0 auto;
+    position: absolute;
+    bottom:0;
+    width: 100%;
   }
   .App {
       min-height: 100vh;
+      padding-bottom: 80px;
   }
      

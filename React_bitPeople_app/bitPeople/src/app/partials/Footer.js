@@ -5,7 +5,7 @@ const Footer = props => {
         <footer id="footer" className="page-footer">
           <div className="footer-copyright">
             <div className="container">
-            © {props.copy}
+            &copy; {props.copy}
             </div>
           </div>
         </footer>
